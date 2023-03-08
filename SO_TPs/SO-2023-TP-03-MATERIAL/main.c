@@ -14,5 +14,11 @@ int main()
     {
         printf("O numero eh impar.\n");
     }
+
+    if(positivo(num))
+        printf("O numero eh positivo.\n");
+    else
+        printf("O numero eh negativo.\n");
+
     return 0;
 }
