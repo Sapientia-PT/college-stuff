@@ -1,0 +1,8 @@
+
+a) 	É criado um processo filho, pois existe apenas um fork no código-fonte que não se encontra em nenhum loop pelo que só é executado uma vez pelo pai, sendo que o filho começa a execução pela linha seguinte.
+
+b) 	var = 11
+	var = 11
+
+c) 	Mudar o print statement para o seguinte: printf("var = %d\n", pid == 0 ? 2*var : var/2);
+	Mudando também a linha do fork para a seguinte: pid_t pid = fork();
