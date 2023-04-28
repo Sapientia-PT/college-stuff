@@ -1,0 +1,66 @@
+
+Exer. Fund.
+
+1.
+    a) Utilizando, p. ex., ctrl+c
+    b) Change first function to this:
+        int counter = 0;
+
+        void apanha_sinal ()
+        {
+            counter++;
+            if(counter >= 3){
+                printf ("O processo %d vai terminar.\n", getpid ());
+                exit (0);
+            }
+        }
+    c) Change main to this:
+        int main (int argc, char *argv[])
+        {
+            struct sigaction sa;
+            sa.sa_handler = apanha_sinal;
+            sa.sa_flags = 0;
+            sigemptyset(&sa.sa_mask);
+            if(sigaction(SIGINT, &sa, NULL) == - 1){
+                perror("main");
+                exit(-1);
+            }
+
+            while (1) {
+                sleep (2);
+                printf ("estou a repetir...\n");
+            }
+            return 0;
+        }
+2.
+    a) Change apanha_interrupcao to this:
+
+        int sum = 0;
+        int counter = 0;
+        void apanha_interrupcao ()
+        {
+            counter++;
+            sum += roleta;
+            if(counter == 3){
+                printf ("Obteve %d pontos.\n", sum);
+                exit (0);
+            }
+        }
+    b) Change apanha_interrupcao to this:
+        void apanha_interrupcao ()
+        {
+            if(counter == 0)
+                sum += roleta;
+            else if(counter == 1)
+                sum += 2*roleta;
+            else if(counter == 2)
+                sum += roleta*roleta;
+            
+            counter++;
+            
+            if(counter == 3){
+                printf ("Obteve %d pontos.\n", sum);
+                exit (0);
+            }
+        }
+    c) 
